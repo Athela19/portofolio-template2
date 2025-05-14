@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import Image from "next/image";
 import { handleEmail } from "../sub-component/email";
 
@@ -39,6 +40,9 @@ export default function Homepage() {
     return () => clearInterval(interval);
   }, [index]);
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, threshold: 0.2 });
+
   return (
     <div
       className="flex flex-col md:flex-row-reverse md:justify-between items-center min-h-screen px-6 md:px-28 py-16 bg-[var(--background)]"
@@ -47,13 +51,14 @@ export default function Homepage() {
 
       {/* Kanan */}
       <motion.div
+      ref={ref}
         initial={{ x: 100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
+        animate={isInView ?{ x: 0, opacity: 1 }:{}}
         transition={{ duration: 1 }}
         className="relative w-70 h-70 md:w-100 md:h-100 border-4 border-[var(--primary)] rounded-full overflow-hidden shadow-lg"
       >
         <Image
-          src="/syarif.jpg"
+          src="/foto/syarif.jpg"
           alt="Foto Profil"
           fill
           className="object-cover"

@@ -8,18 +8,24 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 import { handleEmail } from "../sub-component/email";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function Footer() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, threshold: 0.2 });
+
   return (
-    <motion.div
+   <div className="overflow-hidden">
+     <motion.div
+      ref={ref}
       initial={{ y: 100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
+      animate={isInView ? { y: 0, opacity: 1 } : {}}
       transition={{ duration: 1, ease: "easeInOut" }}
       className="bg-[var(--background)] text-[var(--teks)] border-t border-solid border-[var(--primary)] py-10 px-6 md:px-12 flex flex-col md:flex-row gap-8 md:gap-0"
     >
-      {/* Logo */}
-      <div className="flex justify-center md:justify-start items-center border-b md:border-b-0 md:border-r border-solid border-[var(--teks-secondary)] px-0 md:px-16 pb-6 md:pb-0 hidden md:flex">
+      {/* Logo (Desktop Only) */}
+      <div className="hidden md:flex justify-center md:justify-start items-center border-b md:border-b-0 md:border-r border-solid border-[var(--teks-secondary)] px-0 md:px-16 pb-6 md:pb-0">
         <h1 className="text-3xl font-bold text-[var(--teks)] text-center md:text-left">
           Athela<span className="text-[var(--primary)]">09</span>.
         </h1>
@@ -27,8 +33,8 @@ export default function Footer() {
 
       {/* Menu + Contact */}
       <div className="flex flex-col md:flex-row justify-between items-center w-full px-0 md:px-20 gap-10 md:gap-0">
-        {/* Social Icons */}
-        <div className="flex flex-col gap-3 items-center order-1 md:order-2">
+        {/* Social Media */}
+        <div className="flex flex-col gap-3 items-center order-2 md:order-2">
           <p className="font-bold text-2xl text-center">
             Social <span className="text-[var(--primary)]">Media</span>
           </p>
@@ -87,15 +93,15 @@ export default function Footer() {
         </div>
 
         {/* Navigation Links */}
-        <div className="flex flex-col gap-4 items-center text-center order-2 md:order-1">
+        <div className="flex flex-col gap-4 items-center text-center order-1 md:order-1">
           <ul className="flex flex-wrap gap-4 justify-center">
             <li>
-              <a href="#" className="hover:text-[var(--primary)]">
+              <a href="#home" className="hover:text-[var(--primary)]">
                 Home
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-[var(--primary)]">
+              <a href="#about" className="hover:text-[var(--primary)]">
                 About
               </a>
             </li>
@@ -116,5 +122,6 @@ export default function Footer() {
         </div>
       </div>
     </motion.div>
+   </div>
   );
 }

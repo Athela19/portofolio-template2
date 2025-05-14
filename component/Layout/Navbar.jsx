@@ -33,7 +33,7 @@ export default function Navbar() {
         </li>
         <li className="group">
           <a
-            href="#"
+            href="#about"
             className="text-[var(--teks)] group-hover:text-[var(--primary)]"
           >
             About
@@ -89,7 +89,7 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => setMenuOpen(false)}>
+            <a href="#about" onClick={() => setMenuOpen(false)}>
               About
             </a>
           </li>
