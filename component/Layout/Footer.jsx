@@ -7,21 +7,17 @@ import {
   FaLinkedin,
   FaEnvelope,
 } from "react-icons/fa";
+import { handleEmail } from "../sub-component/email";
+import { motion } from "framer-motion";
 
 export default function Footer() {
-  const handleEmail = () => {
-    const email = "syarkev@gmail.com";
-    const subject = encodeURIComponent("Pesan untuk Muhammad Syarif Nurrohman");
-    const body = encodeURIComponent(
-      "Halo, saya tertarik dengan anda, bisakah kita membicarakan lebih lanjut?"
-    );
-
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
-    window.open(gmailUrl, "_blank");
-  };
-
   return (
-    <div className="bg-[var(--background)] text-[var(--teks)] border-t border-solid border-[var(--primary)] py-10 px-6 md:px-12 flex flex-col md:flex-row gap-8 md:gap-0">
+    <motion.div
+      initial={{ y: 100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 1, ease: "easeInOut" }}
+      className="bg-[var(--background)] text-[var(--teks)] border-t border-solid border-[var(--primary)] py-10 px-6 md:px-12 flex flex-col md:flex-row gap-8 md:gap-0"
+    >
       {/* Logo */}
       <div className="flex justify-center md:justify-start items-center border-b md:border-b-0 md:border-r border-solid border-[var(--teks-secondary)] px-0 md:px-16 pb-6 md:pb-0 hidden md:flex">
         <h1 className="text-3xl font-bold text-[var(--teks)] text-center md:text-left">
@@ -31,7 +27,6 @@ export default function Footer() {
 
       {/* Menu + Contact */}
       <div className="flex flex-col md:flex-row justify-between items-center w-full px-0 md:px-20 gap-10 md:gap-0">
-
         {/* Social Icons */}
         <div className="flex flex-col gap-3 items-center order-1 md:order-2">
           <p className="font-bold text-2xl text-center">
@@ -120,6 +115,6 @@ export default function Footer() {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
