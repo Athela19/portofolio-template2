@@ -78,7 +78,7 @@ export default function Aboutpage() {
         initial={{ x: 100, opacity: 0 }}
         animate={isInView ? { x: 0, opacity: 1 } : {}}
         transition={{ duration: 1 }}
-        className="mt-12 md:mt-0 md:ml-16 text-center md:text-left"
+        className="mt-12 md:mt-0 text-center md:text-left"
       >
         <h1 className="text-5xl font-bold mb-4 text-[var(--teks)]">
           About <span className="text-[var(--primary)]">Me</span>
@@ -86,13 +86,12 @@ export default function Aboutpage() {
         <p className="text-[var(--teks)] max-w-md">
           Saya adalah seorang web developer dengan keahlian di bidang frontend
           dan backend, menguasai teknologi seperti React, Next, Node.js, HTML, MySQL,
-          MongoDB, dan PostgreSQL.Selain itu, saya juga seorang NFT creator yang bersemangat
-          mengeksplorasi dunia digital. 
+          MongoDB, dan PostgreSQL.
         </p>
         <p className="text-[var(--teks)] max-w-md mt-4">
           Di luar pengembangan web, menggambar
           adalah salah satu hobi saya yang memberikan inspirasi dalam setiap
-          proyek yang saya kerjakan. Saat ini, saya masih melanjutkan studi di
+          proyek NFT yang saya kerjakan. Saat ini, saya masih melanjutkan studi di
           SMKN 1 Cimahi dan berusaha untuk terus berkembang dan menciptakan
           karya inovatif di dunia web dan NFT.
         </p>

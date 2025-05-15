@@ -3,7 +3,6 @@
 import {
   FaInstagram,
   FaTwitter,
-  FaWhatsapp,
   FaLinkedin,
   FaEnvelope,
 } from "react-icons/fa";
@@ -57,16 +56,6 @@ export default function Footer() {
                 aria-label="Twitter"
               >
                 <FaTwitter className="hover:text-[var(--primary)]" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://wa.me/6283821390354"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp"
-              >
-                <FaWhatsapp className="hover:text-[var(--primary)]" />
               </a>
             </li>
             <li>

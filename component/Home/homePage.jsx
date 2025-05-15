@@ -45,7 +45,7 @@ export default function Homepage() {
 
   return (
     <div
-      className="flex flex-col md:flex-row-reverse md:justify-between items-center min-h-screen px-6 md:px-28 py-16 bg-[var(--background)]"
+      className="flex flex-col md:flex-row-reverse md:justify-between items-center min-h-screen px-6 md:px-28 py-24 bg-[var(--background)]"
       id="home"
     >
 
