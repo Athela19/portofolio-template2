@@ -14,7 +14,7 @@ export default function Skillpage() {
     { name: "Tailwind", image: "/skill/Tailwind.png" },
     { name: "Bulma", image: "/skill/Bulma.png" },
     { name: "MySql", image: "/skill/Mysql.png" },
-    { name: "Postgre Sql", image: "/skill/postgre.png" },
+    { name: "Postgre Sql", image: "/skill/Postgre.png" },
     { name: "MongoDB", image: "/skill/Mongo.png" },
   ];
 
