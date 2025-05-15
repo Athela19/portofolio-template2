@@ -12,7 +12,7 @@ export default function Homepage() {
   const [done, setDone] = useState(false);
 
   const chars =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-_=+[]{};:<>?/";
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()=+[]{};:<>?/";
 
   useEffect(() => {
     let target = roles[index];
@@ -73,7 +73,7 @@ export default function Homepage() {
         className="text-center md:text-left max-w-xl mt-0"
       >
         <h1 className="text-4xl md:text-5xl font-bold text-[var(--primary)] mb-2 mt-4 leading-tight">
-          Hi, I'm <span className="text-[var(--teks)]">Muhammad Syarif</span>
+          Hi, I&apos;m <span className="text-[var(--teks)]">Muhammad Syarif</span>
         </h1>
 
         <div className="h-10 text-xl md:text-2xl font-mono text-[var(--primary)] mt-2 whitespace-nowrap overflow-hidden tracking-wide">
