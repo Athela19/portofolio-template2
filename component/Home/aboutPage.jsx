@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Aboutpage() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.2 });
+  const isInView = useInView(ref, { once: true, threshold: 1.0 });
 
   const gambar = [
     "/nft/kensa1.png",
@@ -36,7 +36,7 @@ export default function Aboutpage() {
 
   return (
     <div
-      className="flex flex-col md:flex-row md:justify-between items-center min-h-screen px-6 md:px-28 py-16 bg-[var(--background)]"
+      className="flex flex-col md:flex-row md:justify-between items-center min-h-screen px-6 md:px-28 md:py-16 pt-24 bg-[var(--background)]"
       id="about"
     >
       {/* kiri: gambar-gambar NFT */}
