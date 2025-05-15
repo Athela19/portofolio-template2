@@ -85,7 +85,7 @@ export default function Aboutpage() {
         </h1>
         <p className="text-white max-w-md">
           Saya adalah seorang web developer dengan keahlian di bidang frontend
-          dan backend, menguasai teknologi seperti React, Node.js, HTML, MySQL,
+          dan backend, menguasai teknologi seperti React, Next, Node.js, HTML, MySQL,
           MongoDB, dan PostgreSQL.Selain itu, saya juga seorang NFT creator yang bersemangat
           mengeksplorasi dunia digital. 
         </p>
