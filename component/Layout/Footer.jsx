@@ -95,12 +95,12 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-[var(--primary)]">
+              <a href="#skill" className="hover:text-[var(--primary)]">
                 Skill
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-[var(--primary)]">
+              <a href="#project" className="hover:text-[var(--primary)]">
                 Project
               </a>
             </li>
