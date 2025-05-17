@@ -86,7 +86,7 @@ export default function Homepage() {
         <p className="text-md md:text-lg text-[var(--teks-secondary)] mt-6 mb-6">
           Meski baru memulai, semangat untuk terus belajar tak pernah padam!
         </p>
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center justify-center md:justify-start">
           <Link
             href="https://github.com/Athela19/"
             className=" border-2 border-solid border-[var(--primary)] bg-[var(--primary)] text-[var(--teks)] py-4 px-3 rounded-xl text-semibold hover:bg-[var(--background)]"
