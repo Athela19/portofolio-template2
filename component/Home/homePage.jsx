@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
-import { handleEmail } from "../sub-component/email";
+import Link from "next/link";
 
 export default function Homepage() {
   const roles = ["Frontend Developer", "Backend Developer", "NFT Creator"];
@@ -48,12 +48,11 @@ export default function Homepage() {
       className="flex flex-col md:flex-row-reverse md:justify-between items-center min-h-screen px-6 md:px-28 py-24 bg-[var(--background)]"
       id="home"
     >
-
       {/* Kanan */}
       <motion.div
-      ref={ref}
+        ref={ref}
         initial={{ x: 100, opacity: 0 }}
-        animate={isInView ?{ x: 0, opacity: 1 }:{}}
+        animate={isInView ? { x: 0, opacity: 1 } : {}}
         transition={{ duration: 1 }}
         className="relative w-70 h-70 md:w-100 md:h-100 border-4 border-[var(--primary)] rounded-full overflow-hidden shadow-lg"
       >
@@ -87,12 +86,21 @@ export default function Homepage() {
         <p className="text-md md:text-lg text-[var(--teks-secondary)] mt-6 mb-6">
           Meski baru memulai, semangat untuk terus belajar tak pernah padam!
         </p>
-        <button
-          onClick={handleEmail}
-          className=" border-2 border-solid border-[var(--primary)] bg-[var(--primary)] text-[var(--teks)] py-2 px-3 rounded-xl text-semibold hover:bg-[var(--background)]"
-        >
-          Contact Me
-        </button>
+        <div className="flex gap-4">
+          <Link
+            href="https://github.com/Athela19/"
+            className=" border-2 border-solid border-[var(--primary)] bg-[var(--primary)] text-[var(--teks)] py-4 px-3 rounded-xl text-semibold hover:bg-[var(--background)]"
+          >
+            View my Github
+          </Link>
+          <a
+            href="/CV_MUHAMAD SYARIF NURROHMAN.pdf"
+            download
+            className="border-2 border-solid border-[var(--primary)] bg-[var(--background)] text-[var(--teks)] py-4 px-6 rounded-xl font-semibold hover:bg-[var(--primary)] hover:text-white transition-colors duration-300"
+          >
+            My Resume
+          </a>
+        </div>
       </motion.div>
     </div>
   );
