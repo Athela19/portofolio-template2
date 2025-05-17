@@ -65,28 +65,29 @@ export default function Project() {
       </div>
 
       {/* Modal */}
-     {selectedProject && (
-  <div className="fixed inset-0 backdrop-blur-md  bg-opacity-40 flex items-center justify-center z-50">
-    <div className="bg-[var(--background)] rounded-xl p-6 w-full max-w-lg relative text-[var(--teks)] shadow-lg">
+{selectedProject && (
+  <div className="fixed inset-0 backdrop-blur-md bg-opacity-40 flex items-center justify-center z-50 px-4">
+    <div className="bg-[var(--background)] rounded-xl p-6 w-full max-w-md relative text-[var(--teks)] shadow-lg">
       <button
         onClick={() => setSelectedProject(null)}
         className="absolute top-2 right-2 text-xl font-bold text-[var(--teks)]"
       >
         &times;
       </button>
-      <h2 className="text-2xl font-bold mb-2">{selectedProject.name}</h2>
-      <p className="mb-4">{selectedProject.deskripsi}</p>
+      <h2 className="text-2xl font-bold mb-2 text-center">{selectedProject.name}</h2>
+      <p className="mb-4 text-sm text-justify">{selectedProject.deskripsi}</p>
       <Link
         href={selectedProject.link}
         target="_blank"
         rel="noopener noreferrer"
-        className=" border-2 border-solid border-[var(--primary)] bg-[var(--primary)] text-[var(--teks)] py-2 px-3 rounded-xl text-semibold hover:bg-[var(--background)]"
+        className="block text-center border-2 border-solid border-[var(--primary)] bg-[var(--primary)] text-[var(--teks)] py-2 px-4 rounded-xl font-semibold hover:bg-[var(--background)] transition-colors duration-300"
       >
         Kunjungi Project
       </Link>
     </div>
   </div>
 )}
+
 
     </div>
   );
