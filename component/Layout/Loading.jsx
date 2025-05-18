@@ -105,7 +105,7 @@ const LoadingScreen = () => {
         transition={{ duration: 2, ease: "easeInOut", delay: 1.5 }}
         className="mt-4 absolute md:bottom-62 bottom-87"
       >
-        <TypingText text="Athela09.vercel.app" speed={150} />
+        <TypingText text="athela09.vercel.app" speed={150} />
       </motion.div>
     </motion.div>
   );
