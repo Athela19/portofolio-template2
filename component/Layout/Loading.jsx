@@ -33,7 +33,7 @@ const TypingText = ({ text = "", speed = 150, delay = 1500 }) => {
   }, [text, speed, delay]);
 
   return (
-    <p className="text-xl font-bold text-[var(--teks-secondary)]">
+    <p className="text-base md:text-xl font-bold text-[var(--teks-secondary)]">
       {displayedText || "\u00A0"}
     </p>
   );
