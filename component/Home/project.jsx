@@ -10,7 +10,7 @@ const projects = [
     name: "NFT Marketplace",
     images: [
       "/nft/kensa1.png", "/nft/kensa2.png", "/nft/kensa3.png", "/nft/kensa4.png",
-      "/nft/kensa5.png", "/nft/kensa6.png", "/nft/kensa7.png", "/nft/kensa7.png"
+      "/nft/kensa5.png", "/nft/kensa6.jpeg", "/nft/kensa7.jpeg", "/nft/kensa8.jpeg"
     ],
     link: "https://rarible.com/athela09",
     deskripsi: "Kensa adalah koleksi NFT bertema karakter orisinal yang saya gambar sendiri menggunakan aplikasi Ibis Paint X. Koleksi ini terdiri dari berbagai versi karakter utama bernama Kensa, masing-masing memiliki tema dan nuansa berbeda, mulai dari gaya futuristik hingga sentuhan alam."
