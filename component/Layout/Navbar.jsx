@@ -58,14 +58,16 @@ export default function Navbar() {
           </a>
           <span className="h-[3px] bg-[var(--primary)] block w-0 transition-all duration-300 group-hover:w-full"></span>
         </li>
-        <li>
-          <button
-            onClick={handleEmail}
-            className=" border-2 border-solid border-[var(--primary)] bg-[var(--primary)] text-[var(--teks)] py-2 px-3 rounded-xl text-semibold hover:bg-[var(--background)]"
+        <li className="group">
+          <a
+            href="#contact"
+            className="text-[var(--teks)] group-hover:text-[var(--primary)]"
           >
-            Contact Me
-          </button>
+            Contact
+          </a>
+          <span className="h-[3px] bg-[var(--primary)] block w-0 transition-all duration-300 group-hover:w-full"></span>
         </li>
+        
       </ul>
 
       {/* Mobile Menu Toggle Button */}

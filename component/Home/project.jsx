@@ -3,26 +3,22 @@
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState } from "react";
-import Link from "next/link";
+import ProjectModal from "@/component/sub-component/projectModal";
+import CommitHeatmap from "../sub-component/github";
 
 const projects = [
   {
-    name: "NFT Marketplace",
-    images: [
-      "/nft/kensa1.png", "/nft/kensa2.png", "/nft/kensa3.png", "/nft/kensa4.png",
-      "/nft/kensa5.png", "/nft/kensa6.jpeg", "/nft/kensa7.jpeg", "/nft/kensa8.jpeg"
-    ],
-    link: "https://rarible.com/athela09",
-    deskripsi: "Kensa adalah koleksi NFT bertema karakter orisinal yang saya gambar sendiri menggunakan aplikasi Ibis Paint X. Koleksi ini terdiri dari berbagai versi karakter utama bernama Kensa, masing-masing memiliki tema dan nuansa berbeda, mulai dari gaya futuristik hingga sentuhan alam."
-  },
-  {
     name: "FastKnuck",
     images: [
-      "/project/fastknuck/1.png", "/project/fastknuck/2.png", 
-      "/project/fastknuck/3.png", "/project/fastknuck/4.png"
+      "/project/fastknuck/1.png",
+      "/project/fastknuck/2.png",
+      "/project/fastknuck/3.png",
+      "/project/fastknuck/4.png",
     ],
     link: "https://github.com/Athela19/fastknuck",
-    deskripsi: "FastKnuck adalah website media sosial sederhana yang saya buat untuk tugas sekolah, terinspirasi dari Facebook. Website ini memungkinkan pengguna untuk login, membuat postingan, dan berinteraksi dalam tampilan yang intuitif dan responsif."
+    deskripsi:
+      "FastKnuck is a simple social media website I created for a school project, inspired by Facebook. This website allows users to log in, create posts, and interact within an intuitive and responsive interface.",
+    teknologi: ["/skill/Next.png", "/skill/Tailwind.png", "/skill/Postgre.png"],
   },
 ];
 
@@ -33,18 +29,44 @@ export default function Project() {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const startIndex = currentPage * ITEMS_PER_PAGE;
-  const paginatedProjects = projects.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const paginatedProjects = projects.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE
+  );
   const totalPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, threshold: 0.3 });
 
   return (
-    <div className="flex flex-col items-center gap-6 md:gap-10 py-28 px-4" id="project">
-      <h1 className="text-5xl font-bold mb-4 text-[var(--primary)] text-center">
-        My <span className="text-[var(--teks)]">Portofolio</span>
-      </h1>
+    <div className="flex flex-col items-center py-24 px-4" id="project">
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, x: 100 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 1, ease: "easeInOut" }}
+      >
+        <div className="flex flex-col md:flex-row items-center w-full max-w-6xl gap-12 mb-12">
+          <div className="px-12">
+            <h1 className="text-5xl font-bold md:mb-4 text-left">
+              <span className="inline md:block text-[var(--primary)]">My</span>{" "}
+              <span className="inline md:block text-[var(--teks)]">
+                Projects
+              </span>
+            </h1>
+          </div>
 
+          <div className="md:border-l border-solid border-[var(--primary)] md:pl-12">
+            <CommitHeatmap />
+          </div>
+        </div>
+      </motion.div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl">
         {paginatedProjects.map((project, index) => (
-          <ProjectCard key={index} project={project} onClick={() => setSelectedProject(project)} />
+          <ProjectCard
+            key={index}
+            project={project}
+            onClick={() => setSelectedProject(project)}
+          />
         ))}
       </div>
 
@@ -64,31 +86,10 @@ export default function Project() {
         ))}
       </div>
 
-      {/* Modal */}
-{selectedProject && (
-  <div className="fixed inset-0 backdrop-blur-md bg-opacity-40 flex items-center justify-center z-50 px-4">
-    <div className="bg-[var(--background)] rounded-xl p-6 w-full max-w-md relative text-[var(--teks)] shadow-lg">
-      <button
-        onClick={() => setSelectedProject(null)}
-        className="absolute top-2 right-2 text-xl font-bold text-[var(--teks)]"
-      >
-        &times;
-      </button>
-      <h2 className="text-2xl font-bold mb-2 text-center">{selectedProject.name}</h2>
-      <p className="mb-4 text-sm text-justify">{selectedProject.deskripsi}</p>
-      <Link
-        href={selectedProject.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block text-center border-2 border-solid border-[var(--primary)] bg-[var(--primary)] text-[var(--teks)] py-2 px-4 rounded-xl font-semibold hover:bg-[var(--background)] transition-colors duration-300"
-      >
-        Kunjungi Project
-      </Link>
-    </div>
-  </div>
-)}
-
-
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </div>
   );
 }
@@ -98,8 +99,12 @@ function ProjectCard({ project, onClick }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.3 });
 
-  const nextImage = () => setImageIndex((prev) => (prev + 1) % project.images.length);
-  const prevImage = () => setImageIndex((prev) => (prev === 0 ? project.images.length - 1 : prev - 1));
+  const nextImage = () =>
+    setImageIndex((prev) => (prev + 1) % project.images.length);
+  const prevImage = () =>
+    setImageIndex((prev) =>
+      prev === 0 ? project.images.length - 1 : prev - 1
+    );
 
   return (
     <motion.div
@@ -122,16 +127,24 @@ function ProjectCard({ project, onClick }) {
         {project.images.length > 1 && (
           <>
             <button
-              onClick={(e) => { e.stopPropagation(); prevImage(); }}
-              className="absolute left-0 top-1/2 -translate-y-1/2 text-white text-xl bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center hover:bg-opacity-70"
+              onClick={(e) => {
+                e.stopPropagation();
+                prevImage();
+              }}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full p-2 hover:bg-black/70 transition"
+              aria-label="Previous Image"
             >
-              &lt;
+              &#8249;
             </button>
             <button
-              onClick={(e) => { e.stopPropagation(); nextImage(); }}
-              className="absolute right-0 top-1/2 -translate-y-1/2 text-white text-xl bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center hover:bg-opacity-70"
+              onClick={(e) => {
+                e.stopPropagation();
+                nextImage();
+              }}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full p-2 hover:bg-black/70 transition"
+              aria-label="Next Image"
             >
-              &gt;
+              &#8250;
             </button>
           </>
         )}

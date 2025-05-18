@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Homepage() {
-  const roles = ["Frontend Developer", "Backend Developer", "NFT Creator"];
+  const roles = ["Frontend Developer", "Backend Developer", "Fullstack Developer"];
   const [index, setIndex] = useState(0);
   const [displayed, setDisplayed] = useState([]);
   const [done, setDone] = useState(false);
@@ -54,7 +54,7 @@ export default function Homepage() {
         initial={{ x: 100, opacity: 0 }}
         animate={isInView ? { x: 0, opacity: 1 } : {}}
         transition={{ duration: 1 }}
-        className="relative w-70 h-70 md:w-100 md:h-100 border-4 border-[var(--primary)] rounded-full overflow-hidden shadow-lg"
+        className="relative w-70 h-70 md:w-115 md:h-115 border-4 border-[var(--primary)] rounded-full overflow-hidden shadow-lg"
       >
         <Image
           src="/foto/syarif.jpg"
@@ -71,8 +71,11 @@ export default function Homepage() {
         transition={{ duration: 1 }}
         className="text-center md:text-left max-w-xl mt-0"
       >
-        <h1 className="text-4xl md:text-5xl font-bold text-[var(--primary)] mb-2 mt-4 leading-tight">
-          Hi, I'm <span className="text-[var(--teks)]">Muhammad Syarif</span>
+        <h1 className="text-4xl md:text-5xl font-bold text-[var(--primary)] mt-4 leading-tight">
+          Hi, I'm
+        </h1>
+        <h1 className="text-3xl md:text-[40px] font-bold text-[var(--teks)] mb-2 leading-tight">
+          Muhammad Syarif Nurrohman
         </h1>
 
         <div className="h-10 text-xl md:text-2xl font-mono text-[var(--primary)] mt-2 whitespace-nowrap overflow-hidden tracking-wide">
@@ -80,25 +83,21 @@ export default function Homepage() {
         </div>
 
         <p className="text-md md:text-lg text-[var(--teks)] mt-6 mb-6">
-          Menyelami dunia web modern, membangun sistem backend yang tangguh, dan
-          menciptakan karya NFT yang unik
-        </p>
-        <p className="text-md md:text-lg text-[var(--teks-secondary)] mt-6 mb-6">
-          Meski baru memulai, semangat untuk terus belajar tak pernah padam!
+         Creating revolutionary digital solutions with interactive frontends and scalable backends for a seamless and innovative user experience.
         </p>
         <div className="flex gap-4 items-center justify-center md:justify-start">
           <Link
-            href="https://github.com/Athela19/"
-            className=" border-2 border-solid border-[var(--primary)] bg-[var(--primary)] text-[var(--teks)] py-4 px-3 rounded-xl text-semibold hover:bg-[var(--background)]"
+            href="#contact"
+            className=" border-2 border-solid border-[var(--primary)] bg-[var(--primary)] text-[var(--teks)] py-4 px-3 rounded-xl font-semibold hover:bg-[var(--background)]"
           >
-            View my Github
+            Contact Me
           </Link>
           <a
             href="/CV_MUHAMAD SYARIF NURROHMAN.pdf"
             download
             className="border-2 border-solid border-[var(--primary)] bg-[var(--background)] text-[var(--teks)] py-4 px-6 rounded-xl font-semibold hover:bg-[var(--primary)] hover:text-white transition-colors duration-300"
           >
-            My Resume
+            Download CV
           </a>
         </div>
       </motion.div>

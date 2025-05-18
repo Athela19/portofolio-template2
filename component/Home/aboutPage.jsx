@@ -1,4 +1,5 @@
 "use client";
+
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
@@ -14,20 +15,18 @@ export default function Aboutpage() {
     "/nft/kensa4.png",
   ];
 
-  const [positions, setPositions] = useState(Array(gambar.length).fill(0)); // [0, 0, 0, 0]
+  const [positions, setPositions] = useState(Array(gambar.length).fill(0));
 
   useEffect(() => {
     if (isInView) {
-      // Setelah animasi masuk (1 detik), geser satu per satu
-      const timers = gambar.map(
-        (_, index) =>
-          setTimeout(() => {
-            setPositions((prev) => {
-              const newPos = [...prev];
-              newPos[index] = index % 2 === 0 ? -24 : 24; // naik/turun bergantian
-              return newPos;
-            });
-          }, 1000 + index * 300) // jeda antar animasi 0.3 detik
+      const timers = gambar.map((_, index) =>
+        setTimeout(() => {
+          setPositions((prev) => {
+            const newPos = [...prev];
+            newPos[index] = index % 2 === 0 ? -24 : 24;
+            return newPos;
+          });
+        }, 1000 + index * 300)
       );
 
       return () => timers.forEach(clearTimeout);
@@ -39,7 +38,20 @@ export default function Aboutpage() {
       className="flex flex-col md:flex-row md:justify-between items-center min-h-screen px-6 md:px-28 md:py-16 pt-24 bg-[var(--background)]"
       id="about"
     >
-      {/* kiri: gambar-gambar NFT */}
+      {/* Heading (untuk mobile) */}
+      <motion.div
+        ref={ref}
+        initial={{ x: 100, opacity: 0 }}
+        animate={isInView ? { x: 0, opacity: 1 } : {}}
+        transition={{ duration: 1 }}
+        className="mb-6 md:hidden"
+      >
+        <h1 className="text-4xl font-bold mb-6 text-[var(--teks)]">
+          My <span className="text-[var(--primary)]">Journey</span>
+        </h1>
+      </motion.div>
+
+      {/* Kiri: Gambar-gambar NFT */}
       <motion.div
         ref={ref}
         initial={{ x: -100, opacity: 0 }}
@@ -73,28 +85,36 @@ export default function Aboutpage() {
         ))}
       </motion.div>
 
-      {/* kanan: teks/konten */}
+      {/* Kanan: Teks konten */}
       <motion.div
         initial={{ x: 100, opacity: 0 }}
         animate={isInView ? { x: 0, opacity: 1 } : {}}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
         className="mt-12 md:mt-0 text-center md:text-left"
       >
-        <h1 className="text-5xl font-bold mb-4 text-[var(--teks)]">
-          About <span className="text-[var(--primary)]">Me</span>
+        {/* Heading (untuk desktop) */}
+        <h1 className="hidden md:block text-4xl md:text-5xl font-bold mb-6 text-[var(--teks)]">
+          My <span className="text-[var(--primary)]">Journey</span>
         </h1>
-        <p className="text-[var(--teks)] max-w-md">
-          Saya adalah seorang web developer dengan keahlian di bidang frontend
-          dan backend, menguasai teknologi seperti React, Next, Node.js, HTML, MySQL,
-          MongoDB, dan PostgreSQL.
-        </p>
-        <p className="text-[var(--teks)] max-w-md mt-4">
-          Di luar pengembangan web, menggambar
-          adalah salah satu hobi saya yang memberikan inspirasi dalam setiap
-          proyek NFT yang saya kerjakan. Saat ini, saya masih melanjutkan studi di
-          SMKN 1 Cimahi dan berusaha untuk terus berkembang dan menciptakan
-          karya inovatif di dunia web dan NFT.
-        </p>
+
+        <div className="space-y-4 text-[var(--text)] max-w-md">
+          <p>
+            I am a <strong>full-stack developer</strong> focused on building
+            responsive web applications using modern technologies such as{" "}
+            <strong>React, Next.js, and Node.js</strong>.
+          </p>
+          <p>
+            Every project I work on starts from real needs, and I always strive
+            to complete it with clean code and user-friendly interfaces.
+          </p>
+          <p>
+            Besides writing code, I also enjoy drawing. This hobby is not only a
+            means of creative expression but also greatly helps me in designing
+            UI that is aesthetic and intuitive. Many interface designs in my
+            projects originate from hand sketches or visual ideas I create
+            myself.
+          </p>
+        </div>
       </motion.div>
     </div>
   );
