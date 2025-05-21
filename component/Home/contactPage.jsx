@@ -20,7 +20,7 @@ export default function Contact() {
     
     {/* Gambar (Mobile: atas, Desktop: kiri) */}
     <motion.div
-      initial={{ x: 100, opacity: 0 }}
+      initial={{ x: -100, opacity: 0 }}
       animate={isInView ? { x: 0, opacity: 1 } : {}}
       transition={{ duration: 1, ease: "easeInOut" }}
       className="flex justify-center items-center mb-8 md:mb-0 md:w-1/2"
@@ -36,7 +36,7 @@ export default function Contact() {
 
     {/* Konten Teks */}
     <motion.div
-      initial={{ x: -100, opacity: 0 }}
+      initial={{ x: 100, opacity: 0 }}
       animate={isInView ? { x: 0, opacity: 1 } : {}}
       transition={{ duration: 1, ease: "easeInOut" }}
       className="flex flex-col justify-center w-full md:w-1/2 text-left space-y-6"
