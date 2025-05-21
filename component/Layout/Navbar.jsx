@@ -106,7 +106,7 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <button onClick={handleEmail}>Contact</button>
+            <a href="#contact">Contact</a>
           </li>
         </ul>
       </div>
