@@ -85,7 +85,7 @@ export default function ProjectModal({ project, onClose }) {
             rel="noopener noreferrer"
             className="text-center md:text-left border-2 border-[var(--primary)] bg-[var(--primary)] text-[var(--teks)] py-2 px-4 rounded-xl font-semibold hover:bg-[var(--background)] transition-colors duration-300 w-full md:w-fit"
           >
-            Check Github
+            {project.button}
           </Link>
         </div>
       </div>
