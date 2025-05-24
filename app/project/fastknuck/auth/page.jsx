@@ -20,7 +20,7 @@ export default function AuthPage() {
       setMessage(res.data.message || 'Success')
       if (isLogin) {
         // Redirect if needed
-        window.location.href = '/dashboard'
+        window.location.href = '/project/fastknuck'
       }
     } catch (err) {
       setMessage(err.response?.data?.message || 'Terjadi kesalahan')
