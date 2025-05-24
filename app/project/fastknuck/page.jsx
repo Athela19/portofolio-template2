@@ -1,8 +1,6 @@
 "use client"
-
-import FastKnuck from "@/project/fastknuck/home";
 export default function FastKnuckPage() {
     return (
-       <FastKnuck />
+       <h1>FastKnuck</h1>
     );
 }
