@@ -19,7 +19,7 @@ const projects = [
     deskripsi:
       "FastKnuck is a simple social media website I created for a school project, inspired by Facebook. This website allows users to log in, create posts, and interact within an intuitive and responsive interface.",
     teknologi: ["/skill/Next.png", "/skill/Tailwind.png", "/skill/Postgre.png"],
-    button: "view project",
+    button: "Check Project",
   },
 ];
 
