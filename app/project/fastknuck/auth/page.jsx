@@ -1,12 +1,12 @@
-"use client"
+// app/project/fastknuck/auth/page.jsx
+import { Suspense } from "react";
+import AuthPage from "@/project/fastknuck/auth/auth";
 
-import dynamic from "next/dynamic";
-
-// Import AuthPage secara dinamis agar tidak dijalankan saat SSR
-const AuthPage = dynamic(() => import("@/project/fastknuck/auth/auth"), {
-  ssr: false, // <== ini penting
-});
-
-export default function Auth() {
-    return <AuthPage />;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AuthPage />
+    </Suspense>
+  );
 }
+
