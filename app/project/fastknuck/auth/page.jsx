@@ -4,7 +4,7 @@ import axios from 'axios'
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true)
-  const [form, setForm] = useState({ username: '', password: '' })
+  const [form, setForm] = useState({ email: '', password: '', name: '' })
   const [message, setMessage] = useState('')
 
   const handleChange = (e) => {
@@ -17,29 +17,38 @@ export default function AuthPage() {
 
     try {
       const res = await axios.post(endpoint, form, { withCredentials: true })
-      setMessage(res.data.message || 'Success')
       if (isLogin) {
-        // Redirect if needed
         window.location.href = '/project/fastknuck'
       }
     } catch (err) {
-      setMessage(err.response?.data?.message || 'Terjadi kesalahan')
+      setMessage(err.response?.data?.error || 'Terjadi kesalahan')
     }
   }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-2xl font-bold text-center mb-6">
+        <h2 className="text-2xl font-bold text-center mb-6 text-blue-600">
           {isLogin ? 'Login' : 'Register'}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
+          {!isLogin && (
+            <input
+              type="text"
+              name="name"
+              placeholder="Nama Lengkap"
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              value={form.name}
+              onChange={handleChange}
+              required
+            />
+          )}
           <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            className="w-full p-2 border rounded"
-            value={form.username}
+            type="email"
+            name="email"
+            placeholder="Email"
+            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+            value={form.email}
             onChange={handleChange}
             required
           />
@@ -47,7 +56,7 @@ export default function AuthPage() {
             type="password"
             name="password"
             placeholder="Password"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
             value={form.password}
             onChange={handleChange}
             required
@@ -59,12 +68,14 @@ export default function AuthPage() {
             {isLogin ? 'Login' : 'Register'}
           </button>
         </form>
-        <p className="text-center mt-4 text-sm">
-          {isLogin ? "Belum punya akun?" : "Sudah punya akun?"}{' '}
+        <p className="text-center mt-4 text-sm text-gray-600">
+          {isLogin ? 'Belum punya akun?' : 'Sudah punya akun?'}{' '}
           <button
+            type="button"
             onClick={() => {
               setIsLogin(!isLogin)
               setMessage('')
+              setForm({ email: '', password: '', name: '' })
             }}
             className="text-blue-600 hover:underline"
           >
